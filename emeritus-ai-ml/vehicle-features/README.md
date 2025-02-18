@@ -1,4 +1,4 @@
-# What Drives Car Features 
+# What Drives Car Prices
 
 This project uses publicly available car data from used car dealerships. It contains 426K car data and 16 features that may have impact on car price. The application involves understanding of business problem, interpretation of statistocal analysis and modeling of data to be able to predict car prices. The application contains original dataset and working dataset after data cleansing, processing and feature engineering.
 
@@ -13,7 +13,7 @@ This project uses publicly available car data from used car dealerships. It cont
 
 ### Deliverables:
 1. Jupyter Notebook - All codes exists here along with outputs
-2. data folder - contains original dataset and processed dataset used for modeling
+2. data folder - contains original dataset 
 3. plots folder - contains two sub-folders:
     a. data_exploration - contains visualization of data distribution of feature variables
     b. model_performance - contains actual vs. predicted plots
