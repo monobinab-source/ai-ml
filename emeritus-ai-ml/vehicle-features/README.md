@@ -12,7 +12,7 @@ This project uses publicly available car data from used car dealerships. It cont
 7. Analysis of Model Performances and evaluation
 
 ### Deliverables:
-1. Jupyter Notebook - All codes exists here along with outputs
+1. car_features.ipynb - Jupyter Notebook where all working codes exists along with outputs
 2. data folder - contains original dataset 
 3. plots folder - contains two sub-folders:
     a. data_exploration - contains visualization of data distribution of feature variables
