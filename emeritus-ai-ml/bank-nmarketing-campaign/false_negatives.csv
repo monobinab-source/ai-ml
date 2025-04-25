@@ -1,0 +1,1 @@
+age,default,housing,loan,contact,month,day_of_week,duration,campaign,previous,emp.var.rate,cons.price.idx,cons.conf.idx,euribor3m,nr.employed,marital_married,marital_single,marital_unknown,job_encoded,education_encoded,poutcome_encoded,was_previously_contacted,true_label,predicted
