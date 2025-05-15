@@ -42,11 +42,24 @@ Mel Spectrogram represents how sound energy is distributed across frequencies ov
 ## Modeling and training:
 ### K Nearest Neighbor Classifier
 
+### SVM
+The above models can be used to train with audio features to summarize about the audio.
 
 ### Convolutional Neural Network (CNN) 
+CNN is used for music transcription after extracting the mel-spectogram from the audio.
 It can be used for modeling because it can process 2D (time-frequency) data and it is good for complex information processing. CNNs are popularly used in image classification, object detection and speech recognition. It is also in learning features like onsets and offsets when notes start and end, harmonic structures to identify relationships between fundamental frequencies and their harmonics. Hence the training will be done using spectrogram feature matrices and piano roll output matrices.
 
-Evaluation:
+## Evaluation:
 A portion of audio files will be kept aside for model evaluation. Once the model is trained I will generate predictions using the spectrograms of evaluation audio files. The output will be piano rolls and these piano rolls can be converted back to MIDI files to find the loss function and compare the accuracy of prediction.
 
+## Model Inference:
+The model can be saved and deployed and used for inference. 
 
+## Model Deployment
+I used Google Cloud to store data files, save model in GCS and deploy the model endpoints in Vertex AI.
+
+## Gen AI Implementation
+Used Gemini to ask questions about a song. Deployed the Gen AI app in Cloud Functions of GCP.
+
+## Future Enhancements
+Try RNN, LSTM, transformer model, transfer learning for better music trasncription using model prediction for MIDI notes.
