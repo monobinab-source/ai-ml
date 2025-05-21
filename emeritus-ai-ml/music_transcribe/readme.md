@@ -39,27 +39,58 @@ Mel Spectrogram represents how sound energy is distributed across frequencies ov
 
 
 
-## Modeling and training:
-### K Nearest Neighbor Classifier
+## Classical ML Modeling and training:
 
 ### SVM
-The above models can be used to train with audio features to summarize about the audio.
+SVM is good at small-sample, high dimensional tasks. It is a reliable and interpretable algorithm for classification tasks. It is used to classify each audio slice by predicting its most frequent MIDI note using Support Vector Machine (SVM). It can summarize about the audio.
 
-### Convolutional Neural Network (CNN) 
+### Convolutional Neural Network (CNN) Model
 CNN is used for music transcription after extracting the mel-spectogram from the audio.
-It can be used for modeling because it can process 2D (time-frequency) data and it is good for complex information processing. CNNs are popularly used in image classification, object detection and speech recognition. It is also in learning features like onsets and offsets when notes start and end, harmonic structures to identify relationships between fundamental frequencies and their harmonics. Hence the training will be done using spectrogram feature matrices and piano roll output matrices.
+It can be used for modeling because it can process 2D (time-frequency) data and it is good for complex information processing. CNNs are popularly used in image classification, object detection and speech recognition. It is also in learning features like onsets and offsets when notes start and end, harmonic structures to identify relationships between fundamental frequencies and their harmonics. Hence the training will be done using spectrogram feature matrices and piano roll output matrices. Hyperparameter tuning is performed by adjusting number of filters, kernel size, dropout and learning rate. The F1 score of the best model architecture was analysed and while F1 is pretty low as expected for this range of multilabel classification task, it can be used as a baseline model.
+
+### Long Short Term Memory (LSTM) Model
+LSTM model is a type of Recurrent Neural Network (RNN) designed to handle sequential data and capture long-term dependencies more effectively than traditional RNNs. Since there is time component in my dataset, it may perform better than CNN.
+A few architecture was starting with simple and by increasing complexity by stacking more layers and using unidirectional and bidirectional layer, which can give past and future context for each frame, it is found that simpler architecture is better as baseline model based on the dataset used.
 
 ## Evaluation:
 A portion of audio files will be kept aside for model evaluation. Once the model is trained I will generate predictions using the spectrograms of evaluation audio files. The output will be piano rolls and these piano rolls can be converted back to MIDI files to find the loss function and compare the accuracy of prediction.
 
-## Model Inference:
-The model can be saved and deployed and used for inference. 
-
 ## Model Deployment
-I used Google Cloud to store data files, save model in GCS and deploy the model endpoints in Vertex AI.
+I used Google Cloud to develop and deploy. GCS is used as data lake to store raw data files, processed data, X and Y numpy files and saved models once they are built. I deployed the model endpoints in Vertex AI. I built an application in Cloud Functions which can be invoked for model inference.
 
 ## Gen AI Implementation
-Used Gemini to ask questions about a song. Deployed the Gen AI app in Cloud Functions of GCP.
+Generative AI library, Gemini, is integrated in the application, which enables user to ask questions about a song by passing as parameters a mp3 formated song and a prompt e.g. "Transcribe my audio file and tell me the most common note". Deployed the Gen AI app in Cloud Run Functions of GCP.
 
-## Future Enhancements
-Try RNN, LSTM, transformer model, transfer learning for better music trasncription using model prediction for MIDI notes.
+An example curl command to invoke this application:
+
+curl -X POST https://audio2midi-model-call-353746728936.us-central1.run.app \
+-H "Authorization: bearer $(gcloud auth print-identity-token)" \
+-H "Content-Type: application/json" \
+-d '{
+"prompt": "Transcribe my audio file and tell me the most common note",
+"audio_file": "2018/MIDI-Unprocessed_Chamber1_MID--AUDIO_07_R3_2018_wav--2.mp3"
+}'
+
+Response:
+{"response": "Prediction complete! Most common note is 10.", 
+"piano_roll_npy_gcs_path": "gs://predicted_piano_roll/2018/MIDI-Unprocessed_Chamber1_MID--AUDIO_07_R3_2018_wav--2_piano_roll.npy", 
+"embedding_npy_gcs_path": "gs://predicted_piano_roll/2018/MIDI-Unprocessed_Chamber1_MID--AUDIO_07_R3_2018_wav--2_embedding.npy", 
+"piano_roll_summary": "The piano roll has 88 active notes out of 88 possible keys, over a duration of 100 time steps, with an average note density of 2.88 notes per time step.", 
+"audio_caption": "A cascading tapestry of sound, woven from the full spectrum of the piano, with a persistent pulse of the note 10 echoing throughout. This is a piece that feels both expansive and intimate, full of life and nuanced detail. \n", 
+"music_mood": "Energetic \n"}
+
+The app first calls the Vertex AI model endpoints and predict the MIDI file output and Gemini analyzes the MIDI output to detect the mood and the audio caption of the audio.
+
+## Model Inference:
+The model is saved in Vertex AI endpoint and cane be invoked for inference. The app is deployed in Google Cloud Run Funtions and can be invoked using curl command or python library.
+
+## Future Enhancements to Improve Accuracy
+1. Try transformer model, transfer learning for better music trasncription using model prediction for MIDI notes.
+2. Enhance pre and post processings and experiment with different sizes of time slices.
+3. Train with more data. Check if simpler songs and midi files can be collected for better training purposes.
+4. USe feedback loop for fine tuning.
+
+## Automated Retraining: 
+1. Use Vertex AI Pipelines to periodically retrain models as new data becomes available.
+2. Monitoring & Alerts: Set up model monitoring to track drift and raise alerts when performance degrades.
+
