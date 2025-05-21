@@ -1,5 +1,15 @@
 ## Overview
-Automatically transforming music signals in audio recording into notes or score representation of a music piece is a challenge that artists achieve over many years of learning and practising music. For beginner musicians it is a challenge to find notes of music unless their teachers help them or they find one done by someone else on the internet.  The goal of Automatic Music Transcription (AMT) is to produce a score representation of a music piece, by analyzing a sound signal. A processing pipeline needs to be designed that can transform classical piano audio files in .wav format into a music score representation.
+Automatically transforming music signals in audio recording into notes or score representation of a music piece is a challenge that artists achieve over many years of learning and practising music. For beginner musicians it is a challenge to find notes of music unless their teachers help them or they find one done by someone else on the internet.  The goal of Automatic Music Transcription (AMT) is to produce a score representation of a music piece, by analyzing a sound signal. A processing pipeline is designed that can transform classical piano audio files in .mp3 format into a music score representation.
+
+### What Is Included Here
+1. Deep learning models e.g. CNN and sequnetial models e.g. LSTM to transcribe piano music from MP3 to MIDI
+2. Used classical ML to detect note patterns
+3. Used Gemini LLM to summarize mood and structure
+4. Tried synthesizing back to audio from predicted MIDI (which needs more experimentation)
+5. All built and deployed on Google Cloud (Vertex AI, GCS, Cloud Functions)
+
+<img width="644" alt="image" src="https://github.com/user-attachments/assets/0a500e36-e63a-4cb1-944c-b3dabc2fcea9" />
+
 
 ## Data Needed to solve the use case
 Music audio files and corresponding MIDI files for training and testing. MIDI files contain symbolic musical information (notes, duration, velocity, etc.).
