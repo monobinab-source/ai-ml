@@ -95,7 +95,7 @@ Response:
 The app first calls the Vertex AI model endpoints and predict the MIDI file output and Gemini analyzes the MIDI output to detect the mood and the audio caption of the audio.
 
 ## Model Inference:
-The model is saved in Vertex AI endpoint and cane be invoked for inference. The app is deployed in Google Cloud Run Funtions and can be invoked using curl command or python library.
+The SVM and CNN models are saved in Vertex AI endpoint and can be invoked for inference. The app is deployed in Google Cloud Run Funtions, which invokes these model endpoints, and the app can be invoked using curl command or python library. The app also generates a summary using Gemini.
 
 ## Future Enhancements to Improve Accuracy
 1. Try transformer model, transfer learning for better music trasncription using model prediction for MIDI notes.
