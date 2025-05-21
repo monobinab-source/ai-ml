@@ -68,6 +68,9 @@ A portion of audio files will be kept aside for model evaluation. Once the model
 ## Model Deployment
 I used Google Cloud to develop and deploy. GCS is used as data lake to store raw data files, processed data, X and Y numpy files and saved models once they are built. I deployed the model endpoints in Vertex AI. I built an application in Cloud Functions which can be invoked for model inference.
 
+![image](https://github.com/user-attachments/assets/a0bf1b59-c768-4073-8b4e-653debd9c782)
+
+
 ## Gen AI Implementation
 Generative AI library, Gemini, is integrated in the application, which enables user to ask questions about a song by passing as parameters a mp3 formated song and a prompt e.g. "Transcribe my audio file and tell me the most common note". Deployed the Gen AI app in Cloud Run Functions of GCP.
 
