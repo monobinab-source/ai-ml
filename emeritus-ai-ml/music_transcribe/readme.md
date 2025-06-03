@@ -1,3 +1,10 @@
+# ------------------------------------------------------------------------------
+#  © 2025 Monobina Bhowmick-Saha
+#  Original Repo: https://github.com/monobinab-source/ai-ml/tree/main/emeritus-ai-ml/music_transcribe
+#  Licensed under the MIT License. See the LICENSE file for details.
+# ------------------------------------------------------------------------------
+
+
 ## Overview
 Automatically transforming music signals in audio recording into notes or score representation of a music piece is a challenge that artists achieve over many years of learning and practising music. For beginner musicians it is a challenge to find notes of music unless their teachers help them or they find one done by someone else on the internet.  The goal of Automatic Music Transcription (AMT) is to produce a score representation of a music piece, by analyzing a sound signal. A processing pipeline is designed that can transform classical piano audio files in .mp3 format into a music score representation.
 
