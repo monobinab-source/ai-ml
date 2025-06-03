@@ -1,3 +1,9 @@
+# ------------------------------------------------------------------------------
+#  © 2025 Monobina Bhowmick-Saha
+#  Original Repo: https://github.com/monobinab-source/ai-ml/tree/main/emeritus-ai-ml/music_transcribe
+#  Licensed under the MIT License. See the LICENSE file for details.
+# ------------------------------------------------------------------------------
+
 import functions_framework
 from google.cloud import aiplatform, storage
 from vertexai.preview import generative_models
