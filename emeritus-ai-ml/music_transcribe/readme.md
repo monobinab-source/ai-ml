@@ -1,8 +1,8 @@
-# ------------------------------------------------------------------------------
-#  © 2025 Monobina Bhowmick-Saha
-#  Original Repo: https://github.com/monobinab-source/ai-ml/tree/main/emeritus-ai-ml/music_transcribe
-#  Licensed under the MIT License. See the LICENSE file for details.
-# ------------------------------------------------------------------------------
+ ------------------------------------------------------------------------------
+  © 2025 Monobina Bhowmick-Saha
+  Original Repo: https://github.com/monobinab-source/ai-ml/tree/main/emeritus-ai-ml/music_transcribe
+  Licensed under the MIT License. See the LICENSE file for details.
+ ------------------------------------------------------------------------------
 
 
 ## Overview
